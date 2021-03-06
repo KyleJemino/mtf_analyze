@@ -6,7 +6,7 @@ import ImageInput from './components/ImageInput.js'
 
 export const StateContext = React.createContext()
 
-export const actionType = {
+export const TYPES = {
   INSERT_IMAGE: "INSERT_IMAGE",
 }
 
@@ -18,7 +18,7 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch(action.type) {
-    case action.INSERT_IMAGE:
+    case TYPES.INSERT_IMAGE:
       return {
         ...state,
         image: action.payload

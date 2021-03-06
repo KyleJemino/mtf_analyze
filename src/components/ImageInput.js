@@ -1,18 +1,16 @@
 import React, { useContext, useEffect } from 'react'
-import { StateContext, actionType } from '../App'
+import { StateContext, TYPES } from '../App'
 
 function ImageInput() {
-  const stateContext = useContext(StateContext)
+  const context = useContext(StateContext)
 
   const onChangePicture = (e) => {
     const uploaded_file = e.target.files[0]
     const imageURL = URL.createObjectURL(uploaded_file)
     if (uploaded_file) {
-      stateContext.dispatch({type: actionType.INSERT_IMAGE, payload: "hello" })
+      context.dispatch({type: TYPES.INSERT_IMAGE, payload: imageURL })
     }
   }
-
-  useEffect(() => console.dir(stateContext.state))
 
   return (
     <>
