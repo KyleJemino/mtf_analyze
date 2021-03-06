@@ -3,6 +3,7 @@ import logo from './logo.svg'
 import './App.css'
 
 import ImageInput from './components/ImageInput.js'
+import ImageContainer from './components/ImageContainer.js'
 
 export const StateContext = React.createContext()
 
@@ -36,7 +37,10 @@ function App() {
       <div className="App">
         <h1>MTF Analyze</h1>
       </div>
-      <ImageInput />
+      <div className="flex-column">
+        <ImageInput />
+        <ImageContainer />
+      </div>
     </StateContext.Provider>
   )
 }
