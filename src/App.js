@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import logo from './logo.svg'
 import './App.css'
 
 import ImageInput from './components/ImageInput.js'
