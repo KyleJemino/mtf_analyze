@@ -1,4 +1,6 @@
 import React, { useContext } from 'react'
+import ImageMapper from 'react-image-mapper'
+
 import { StateContext } from '../App.js'
 
 const ImageContainer = () => {
@@ -7,7 +9,7 @@ const ImageContainer = () => {
   return (
     <>
       { context.state.image !== "" 
-        ? <img src={context.state.image} alt="sensor"/>
+        ? <ImageMapper src={context.state.image}/>
         : <p>No Image Uploaded yet</p>
       }
     </>
