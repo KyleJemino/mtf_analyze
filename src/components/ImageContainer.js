@@ -8,10 +8,12 @@ const ImageContainer = () => {
 
   return (
     <>
-      { context.state.image !== "" 
-        ? <ImageMapper src={context.state.image}/>
-        : <p>No Image Uploaded yet</p>
-      }
+      <div className="image-section">
+        { context.state.image !== "" 
+          ? <ImageMapper src={context.state.image}/>
+          : <p>No Image Uploaded yet</p>
+        }
+      </div>
     </>
   )
 }
