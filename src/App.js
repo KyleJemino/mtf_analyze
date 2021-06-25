@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 
 import ImageInput from './components/ImageInput.js'
@@ -16,23 +16,23 @@ const initialState = {
   image: ""
 }
 
-const reducer = (state, action) => {
-  switch(action.type) {
-    case TYPES.INSERT_IMAGE:
-      return {
-        ...state,
-        image: action.payload
-      }
-    default:
-      return state
-  }
-}
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [sensorData, setSensorData] = useState(null)
+  const [image, setImage] = useState('')
+  const [areas, setAreas] = useState([])
+
+  const context = {
+    sensorData,
+    setSensorData,
+    image,
+    setImage,
+    areas,
+    setAreas
+  }
 
   return (
-    <StateContext.Provider value={{ state: state, dispatch: dispatch }}>
+    <StateContext.Provider value={context}>
       <div className="App">
         <h1>MTF Analyze</h1>
       </div>

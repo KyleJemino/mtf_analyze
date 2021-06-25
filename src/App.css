@@ -39,6 +39,15 @@
   margin:16px 0px;
 }
 
+.button {
+  max-width: 200px;
+}
+
+.text-input {
+  width: 200px;
+  margin-bottom: 16px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
