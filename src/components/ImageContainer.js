@@ -29,12 +29,19 @@ const ImageContainer = () => {
       rect: makeRectangle(points), 
     }
 
+    console.log([...areas, newArea])
+
     setAreas([...areas, newArea])
+    setPoints([])
+    setName('')
   }
 
   useEffect(() => {
-    if (points.length === 4) { setIsSaveDisabled(false) }
-    if (name === '') { setIsSaveDisabled(false) }
+    if (points.length === 4 && name.length > 0) { 
+      setIsSaveDisabled(false) 
+    } else {
+      setIsSaveDisabled(true)
+    }
   }, [points, name])
 
   return (
@@ -47,7 +54,7 @@ const ImageContainer = () => {
         }
       </div>
       <label>Area Name</label>
-      <input className="text-input" type='text' onChange={handleNameOnChange}></input>
+      <input className="text-input" type='text' value={name} onChange={handleNameOnChange}></input>
       <button className="button" disabled={isSaveDisabled} onClick={handleSave}>Save Area</button>
     </>
   )

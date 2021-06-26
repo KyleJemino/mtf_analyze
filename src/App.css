@@ -35,6 +35,13 @@
   justify-content: center;
 }
 
+.flex-row {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
 .image-section {
   margin:16px 0px;
 }

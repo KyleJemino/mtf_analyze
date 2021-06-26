@@ -1,0 +1,24 @@
+import React, { useState, useContext, useEffect } from 'react'
+import { StateContext } from '../App.js'
+
+export const AreaCountDisplay = ({ areas }) => {
+  return (
+    <>
+      <div>
+        {areas.forEach((area) => {
+          return (
+          <div>
+            <h4>{area.name}</h4>
+            <p>Top Left: <span>{area.rect.topLeft}</span></p>
+            <p>Bottom Left: <span>{area.rect.bottomLeft}</span></p>
+            <p>Top Right: <span>{area.rect.topRight}</span></p>
+            <p>Bottom Right: <span>{area.rect.bottomLeft}</span></p>
+          </div>
+          )
+        })}
+      </div>
+    </>
+  )
+}
+
+export default AreaCountDisplay

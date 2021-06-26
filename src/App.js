@@ -3,6 +3,7 @@ import './App.css'
 
 import ImageInput from './components/ImageInput.js'
 import ImageContainer from './components/ImageContainer.js'
+import AreaCountDisplay from './components/AreaCountDisplay.js'
 
 export const StateContext = React.createContext()
 
@@ -39,6 +40,7 @@ function App() {
       <div className="flex-column">
         <ImageInput />
         <ImageContainer />
+        <AreaCountDisplay areas={areas}/>
       </div>
     </StateContext.Provider>
   )
