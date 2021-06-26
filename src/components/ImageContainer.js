@@ -1,24 +1,41 @@
 import React, { useState, useContext, useEffect } from 'react'
 import ImageMapper from 'react-image-mapper'
+import { v4 as uuid } from 'uuid'
+import { makeRectangle } from '../utils'
 
 import { StateContext } from '../App.js'
 
 const ImageContainer = () => {
   const [points, setPoints] = useState([])
   const [isSaveDisabled, setIsSaveDisabled] = useState(true)
-  const { image } = useContext(StateContext)
+  const [name, setName] = useState('')
+
+  const { image, areas, setAreas } = useContext(StateContext)
 
   const onClick = (e) => {
-    console.log("x: ", e.nativeEvent.offsetX)
-    console.log("y: ", e.nativeEvent.offsetY)
     if (points.length < 4) {
       setPoints([...points, [e.nativeEvent.offsetX, e.nativeEvent.offsetY]])
     }
   }
 
+  const handleNameOnChange = (e) => {
+    setName(e.target.value)
+  }
+
+  const handleSave = () => {
+    const newArea = {
+      id: uuid(),
+      name,
+      rect: makeRectangle(points), 
+    }
+
+    setAreas([...areas, newArea])
+  }
+
   useEffect(() => {
     if (points.length === 4) { setIsSaveDisabled(false) }
-  }, [points])
+    if (name === '') { setIsSaveDisabled(false) }
+  }, [points, name])
 
   return (
     <>
@@ -30,8 +47,8 @@ const ImageContainer = () => {
         }
       </div>
       <label>Area Name</label>
-      <input className="text-input"type='text'></input>
-      <button className="button" disabled={isSaveDisabled}>Save Area</button>
+      <input className="text-input" type='text' onChange={handleNameOnChange}></input>
+      <button className="button" disabled={isSaveDisabled} onClick={handleSave}>Save Area</button>
     </>
   )
 }
