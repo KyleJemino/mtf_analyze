@@ -14,6 +14,7 @@ function ImageInput() {
 
   return (
     <>
+      <label>Upload sensor image here:</label><br />
       <input type="file" placeholder="Upload Measure the Future Sensor image here" onChange={(e) => {onChangePicture(e)}}></input>
     </>
   )

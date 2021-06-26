@@ -10,6 +10,7 @@ export const AreaCountDisplay = ({ areas }) => {
           return (
             <div key={area.id}>
               <h4>AREA: {area.name}</h4>
+              <h5>Counts: {area.name}</h5>
               <p>Top Left: <span>x: {area.rect.topLeft[0]}, y: {area.rect.topLeft[1]}</span></p>
               <p>Bottom Left: <span>x: {area.rect.bottomLeft[0]}, y: {area.rect.bottomLeft[1]}</span></p>
               <p>Top Right: <span>x: {area.rect.topRight[0]}, y: {area.rect.topRight[1]}</span></p>
