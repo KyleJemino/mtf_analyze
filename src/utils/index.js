@@ -1,11 +1,4 @@
-// let a1 = [[450, 100], [520, 85], [640, 190], [700, 170]];
-// let a2 = [[328, 136], [450, 100], [520, 260], [640, 190]];
-// let c1 = [[95, 150], [328, 136], [264, 282], [455, 255]];
-// let c2 = [[0, 180], [95, 150], [153, 377], [264, 282]];
-// let b1 = [[640, 190],[766, 171], [910, 354], [1010, 298]];
-// let b2 = [[570, 270], [640, 190], [820, 433], [910, 354]];
-// let d1 = [[344, 289], [508,289], [630, 507], [750, 450]];
-// let d2 = [[197, 368], [344, 289], [462, 567], [630, 507]];
+const pointInPolygon = require('point-in-polygon')
 
 const line  = ([x1, y1], [x2, y2]) => {
     const m = (y2 - y1) / (x2 -x1);
@@ -66,11 +59,8 @@ export const makeRectangle = (points) => {
 
 //Thesis note: cartesian coordinate of pic is upside down so pixels above a line are actually less than y of line
 const within = ({bottomLeft: p1, topLeft: p2, bottomRight: p3, topRight: p4}, p) => {
-    const left = line(p1, p2)(p[0]);
-    const bot = line(p1, p3)(p[0]);
-    const right = line(p3, p4)(p[0]);
-    const top = line(p4, p2)(p[0]);
-    return p[1] >= left && p[1] <= right && p[1] <= bot && p[1] >= top;
+    const polygon = [topLeft, bottomLeft, topRight, bottomRight]
+    return pointInPolygon(p, polygon)
 }
 
 const inDuration = (interaction, rect) => {
