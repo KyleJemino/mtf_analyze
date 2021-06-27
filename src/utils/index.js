@@ -58,7 +58,7 @@ export const makeRectangle = (points) => {
 }
 
 //Thesis note: cartesian coordinate of pic is upside down so pixels above a line are actually less than y of line
-const within = ({bottomLeft: p1, topLeft: p2, bottomRight: p3, topRight: p4}, p) => {
+const within = ({bottomLeft, topLeft, bottomRight, topRight}, p) => {
     const polygon = [topLeft, bottomLeft, topRight, bottomRight]
     return pointInPolygon(p, polygon)
 }
