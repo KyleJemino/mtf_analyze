@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { StateContext, TYPES } from '../App'
+import { StateContext } from '../App'
 
 function ImageInput() {
   const {setImage} = useContext(StateContext)

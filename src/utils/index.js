@@ -32,8 +32,6 @@ const scaler = (data) => {
             y.push(waypoint[1]);
         });
     });
-    minX = Math.min(...x);
-    minY = Math.min(...y);
     maxX = Math.max(...x);
     maxY = Math.max(...y);
 
@@ -95,6 +93,11 @@ const inDuration = (interaction, rect) => {
         return total + periodValue;
     }, 0);
     return totalDuration;
+}
+
+export const getCounts = (data, rect, minDuration) => {
+    const scaled = scaler(data)
+    return scaled.map((interaction) => inDuration(interaction, rect)).filter((duration) => duration >= minDuration).length   
 }
 
 const counter = (data, timeStayed) => {

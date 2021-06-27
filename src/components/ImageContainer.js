@@ -9,6 +9,7 @@ const ImageContainer = () => {
   const [points, setPoints] = useState([])
   const [isSaveDisabled, setIsSaveDisabled] = useState(true)
   const [name, setName] = useState('')
+  const [position, setPosition] = useState(null)
 
   const { image, areas, setAreas } = useContext(StateContext)
 
@@ -36,6 +37,10 @@ const ImageContainer = () => {
     setName('')
   }
 
+  const handleHover = (e) => {
+    setPosition([e.nativeEvent.offsetX, e.nativeEvent.offsetY])
+  }
+
   useEffect(() => {
     if (points.length === 4 && name.length > 0) { 
       setIsSaveDisabled(false) 
@@ -49,9 +54,14 @@ const ImageContainer = () => {
       <p>Click the image to set areas</p>
       <div className="image-section">
         { image !== "" 
-          ? <ImageMapper src={image} onImageClick={(e) => onClick(e)} />
+          ? <ImageMapper 
+              src={image} 
+              onImageClick={(e) => onClick(e)} 
+              onImageMouseMove={handleHover}
+            />
           : <p>No Image Uploaded yet</p>
         }
+        <p>{position && `x = ${position[0]}, y = ${position[1]}`}</p>
       </div>
       <label>Area Name</label>
       <input className="text-input" type='text' value={name} onChange={handleNameOnChange}></input>
