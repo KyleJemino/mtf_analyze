@@ -1,14 +1,5 @@
 const pointInPolygon = require('point-in-polygon')
 
-const line  = ([x1, y1], [x2, y2]) => {
-    const m = (y2 - y1) / (x2 -x1);
-    const b = y1 - (m*x1);
-    return (x) => {
-        let y = (m*x) +b;
-        return y;
-    };
-}
-
 const scaler = (data) => {
 //  data.filter((datum) => datum.Duration > 60 );
     var maxX,
@@ -72,9 +63,8 @@ const inDuration = (interaction, rect) => {
             } else if (currentIndex === arrLength - 1) {
                 return duration + (interaction.Duration - currentDuration)
             }
-        } else {
-            return duration
-        }
+        } 
+        return duration
     }, 0)
 
     return totalDuration
