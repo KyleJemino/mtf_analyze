@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { StateContext } from '../App.js'
 
 export const DataInput = () => {
-  const { sensorData, setSensorData } = useContext(StateContext)  
+  const { setSensorData } = useContext(StateContext)  
 
   const handleChange = e => {
     const fr = new FileReader()
