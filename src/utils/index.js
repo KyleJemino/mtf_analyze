@@ -74,23 +74,20 @@ const within = ({bottomLeft: p1, topLeft: p2, bottomRight: p3, topRight: p4}, p)
 }
 
 const inDuration = (interaction, rect) => {
-    let i = 0, durationArr=[];
-    while (i < interaction.Waypoints.length) {
-        if(within(rect, interaction.Waypoints[i]) && i < interaction.Waypoints.length - 1){
-            let period = [interaction.WaypointTimes[i]];
-            while(within(rect, interaction.Waypoints[i+1]) && i+1 < interaction.Waypoints.length - 1){
-                i++;
+    const arrLength = interaction.WaypointTimes.length
+    const totalDuration = interaction.WaypointTimes.reduce((duration, currentDuration, currentIndex, WaypointTimes) => {
+        if (within(rect, interaction.Waypoints[currentIndex])) {
+            if (currentIndex < arrLength-1) {
+                return duration + (WaypointTimes[currentIndex + 1] - currentDuration)
+            } else if (currentIndex === arrLength - 1) {
+                return duration + (interaction.Duration - currentDuration)
             }
-            period.push(interaction.WaypointTimes[i+1]);
-            durationArr.push(period);
+        } else {
+            return duration
         }
-        i++;
-    }
-    let totalDuration = durationArr.reduce((total, current) => {
-        let periodValue = current[1]-current[0];
-        return total + periodValue;
-    }, 0);
-    return totalDuration;
+    }, 0)
+
+    return totalDuration
 }
 
 export const getCounts = (data, rect, minDuration) => {
