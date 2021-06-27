@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { StateContext } from '../App.js'
 
 export const DataInput = () => {
@@ -11,10 +11,6 @@ export const DataInput = () => {
       setSensorData(JSON.parse(e.target.result))
     }
   }
-
-  useEffect(() => {
-    console.log(sensorData)
-  }, [sensorData])
 
   return (
     <div>

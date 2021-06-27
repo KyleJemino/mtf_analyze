@@ -1,11 +1,11 @@
-let a1 = [[450, 100], [520, 85], [640, 190], [700, 170]];
-let a2 = [[328, 136], [450, 100], [520, 260], [640, 190]];
-let c1 = [[95, 150], [328, 136], [264, 282], [455, 255]];
-let c2 = [[0, 180], [95, 150], [153, 377], [264, 282]];
-let b1 = [[640, 190],[766, 171], [910, 354], [1010, 298]];
-let b2 = [[570, 270], [640, 190], [820, 433], [910, 354]];
-let d1 = [[344, 289], [508,289], [630, 507], [750, 450]];
-let d2 = [[197, 368], [344, 289], [462, 567], [630, 507]];
+// let a1 = [[450, 100], [520, 85], [640, 190], [700, 170]];
+// let a2 = [[328, 136], [450, 100], [520, 260], [640, 190]];
+// let c1 = [[95, 150], [328, 136], [264, 282], [455, 255]];
+// let c2 = [[0, 180], [95, 150], [153, 377], [264, 282]];
+// let b1 = [[640, 190],[766, 171], [910, 354], [1010, 298]];
+// let b2 = [[570, 270], [640, 190], [820, 433], [910, 354]];
+// let d1 = [[344, 289], [508,289], [630, 507], [750, 450]];
+// let d2 = [[197, 368], [344, 289], [462, 567], [630, 507]];
 
 const line  = ([x1, y1], [x2, y2]) => {
     const m = (y2 - y1) / (x2 -x1);
@@ -18,9 +18,7 @@ const line  = ([x1, y1], [x2, y2]) => {
 
 const scaler = (data) => {
 //  data.filter((datum) => datum.Duration > 60 );
-    var minX,
-        minY,
-        maxX,
+    var maxX,
         maxY,
         xFactor,
         yFactor,
@@ -100,18 +98,18 @@ export const getCounts = (data, rect, minDuration) => {
     return scaled.map((interaction) => inDuration(interaction, rect)).filter((duration) => duration >= minDuration).length   
 }
 
-const counter = (data, timeStayed) => {
-    let scaled = scaler(data);
-    return {
-        sa1 : scaled.map((interaction) => inDuration(interaction, a1)).filter((duration) => duration >= timeStayed).length,
-        sa2 : scaled.map((interaction) => inDuration(interaction, a2)).filter((duration) => duration >= timeStayed).length,
-        sb1 : scaled.map((interaction) => inDuration(interaction, b1)).filter((duration) => duration >= timeStayed).length,
-        sb2 : scaled.map((interaction) => inDuration(interaction, b2)).filter((duration) => duration >= timeStayed).length,
-        sc1 : scaled.map((interaction) => inDuration(interaction, c1)).filter((duration) => duration >= timeStayed).length,
-        sc2 : scaled.map((interaction) => inDuration(interaction, c2)).filter((duration) => duration >= timeStayed).length,
-        sd1 : scaled.map((interaction) => inDuration(interaction, d1)).filter((duration) => duration >= timeStayed).length,
-        sd2 : scaled.map((interaction) => inDuration(interaction, d2)).filter((duration) => duration >= timeStayed).length,
-    }
-}
+// const counter = (data, timeStayed) => {
+//     let scaled = scaler(data);
+//     return {
+//         sa1 : scaled.map((interaction) => inDuration(interaction, a1)).filter((duration) => duration >= timeStayed).length,
+//         sa2 : scaled.map((interaction) => inDuration(interaction, a2)).filter((duration) => duration >= timeStayed).length,
+//         sb1 : scaled.map((interaction) => inDuration(interaction, b1)).filter((duration) => duration >= timeStayed).length,
+//         sb2 : scaled.map((interaction) => inDuration(interaction, b2)).filter((duration) => duration >= timeStayed).length,
+//         sc1 : scaled.map((interaction) => inDuration(interaction, c1)).filter((duration) => duration >= timeStayed).length,
+//         sc2 : scaled.map((interaction) => inDuration(interaction, c2)).filter((duration) => duration >= timeStayed).length,
+//         sd1 : scaled.map((interaction) => inDuration(interaction, d1)).filter((duration) => duration >= timeStayed).length,
+//         sd2 : scaled.map((interaction) => inDuration(interaction, d2)).filter((duration) => duration >= timeStayed).length,
+//     }
+// }
 // console.dir(data);
 // console.dir(counter(data21, 30));
