@@ -1,7 +1,6 @@
 const pointInPolygon = require('point-in-polygon')
 
 const scaler = (data) => {
-//  data.filter((datum) => datum.Duration > 60 );
     var maxX,
         maxY,
         xFactor,
@@ -48,7 +47,6 @@ export const makeRectangle = (points) => {
     }
 }
 
-//Thesis note: cartesian coordinate of pic is upside down so pixels above a line are actually less than y of line
 const within = ({bottomLeft, topLeft, bottomRight, topRight}, p) => {
     const polygon = [topLeft, bottomLeft, topRight, bottomRight]
     return pointInPolygon(p, polygon)
@@ -74,19 +72,3 @@ export const getCounts = (data, rect, minDuration) => {
     const scaled = scaler(data)
     return scaled.map((interaction) => inDuration(interaction, rect)).filter((duration) => duration >= minDuration).length   
 }
-
-// const counter = (data, timeStayed) => {
-//     let scaled = scaler(data);
-//     return {
-//         sa1 : scaled.map((interaction) => inDuration(interaction, a1)).filter((duration) => duration >= timeStayed).length,
-//         sa2 : scaled.map((interaction) => inDuration(interaction, a2)).filter((duration) => duration >= timeStayed).length,
-//         sb1 : scaled.map((interaction) => inDuration(interaction, b1)).filter((duration) => duration >= timeStayed).length,
-//         sb2 : scaled.map((interaction) => inDuration(interaction, b2)).filter((duration) => duration >= timeStayed).length,
-//         sc1 : scaled.map((interaction) => inDuration(interaction, c1)).filter((duration) => duration >= timeStayed).length,
-//         sc2 : scaled.map((interaction) => inDuration(interaction, c2)).filter((duration) => duration >= timeStayed).length,
-//         sd1 : scaled.map((interaction) => inDuration(interaction, d1)).filter((duration) => duration >= timeStayed).length,
-//         sd2 : scaled.map((interaction) => inDuration(interaction, d2)).filter((duration) => duration >= timeStayed).length,
-//     }
-// }
-// console.dir(data);
-// console.dir(counter(data21, 30));
